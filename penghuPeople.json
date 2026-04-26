@@ -1,0 +1,79 @@
+{
+  "status": "success",
+  "message": "澎湖縣各鄉鎮市人口統計資料取得成功",
+  "update_time": "2026-03-20T12:00:00Z",
+  "data": [
+    {
+      "town_id": "10016010",
+      "town_name": "馬公市",
+      "postal_code": "880",
+      "statistics": {
+        "total_population": 63847,
+        "male": 32512,
+        "female": 31335,
+        "density": 1878.5,
+        "households": 26120
+      }
+    },
+    {
+      "town_id": "10016020",
+      "town_name": "湖西鄉",
+      "postal_code": "885",
+      "statistics": {
+        "total_population": 15632,
+        "male": 8105,
+        "female": 7527,
+        "density": 472.1,
+        "households": 5840
+      }
+    },
+    {
+      "town_id": "10016030",
+      "town_name": "白沙鄉",
+      "postal_code": "884",
+      "statistics": {
+        "total_population": 10125,
+        "male": 5210,
+        "female": 4915,
+        "density": 140.8,
+        "households": 3850
+      }
+    },
+    {
+      "town_id": "10016040",
+      "town_name": "西嶼鄉",
+      "postal_code": "881",
+      "statistics": {
+        "total_population": 8214,
+        "male": 4201,
+        "female": 4013,
+        "density": 204.8,
+        "households": 3125
+      }
+    },
+    {
+      "town_id": "10016050",
+      "town_name": "望安鄉",
+      "postal_code": "882",
+      "statistics": {
+        "total_population": 5421,
+        "male": 2840,
+        "female": 2581,
+        "density": 396.4,
+        "households": 1950
+      }
+    },
+    {
+      "town_id": "10016060",
+      "town_name": "七美鄉",
+      "postal_code": "883",
+      "statistics": {
+        "total_population": 3901,
+        "male": 2015,
+        "female": 1886,
+        "density": 558.2,
+        "households": 1410
+      }
+    }
+  ]
+}
