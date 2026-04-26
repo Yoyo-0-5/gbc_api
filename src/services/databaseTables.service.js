@@ -57,14 +57,18 @@ async function readTable(tableName) {
     .map((columnName) => `${escapeSqlString(columnName)}, ${escapeIdentifier(columnName)}`)
     .join(", ");
 
-  const query = `SELECT COALESCE(JSON_ARRAYAGG(JSON_OBJECT(${jsonObjectParts})), JSON_ARRAY()) AS payload FROM ${escapeIdentifier(tableName)};`;
+  const query = [
+    "SET SESSION group_concat_max_len = 67108864;",
+    `SELECT TO_BASE64(COALESCE(JSON_ARRAYAGG(JSON_OBJECT(${jsonObjectParts})), JSON_ARRAY())) AS payload FROM ${escapeIdentifier(tableName)};`,
+  ].join(" ");
   const output = await runMysqlQuery(query);
 
   if (!output) {
     return [];
   }
 
-  return JSON.parse(output);
+  const decodedPayload = Buffer.from(output, "base64").toString("utf8");
+  return JSON.parse(decodedPayload);
 }
 
 async function readDatabaseTables() {
@@ -76,6 +80,18 @@ async function readDatabaseTables() {
   return Object.fromEntries(entries);
 }
 
+async function readDatabaseTableByName(tableName) {
+  const tableNames = await getDatabaseTableNames();
+
+  if (!tableNames.includes(tableName)) {
+    return null;
+  }
+
+  return readTable(tableName);
+}
+
 module.exports = {
+  getDatabaseTableNames,
   readDatabaseTables,
+  readDatabaseTableByName,
 };
